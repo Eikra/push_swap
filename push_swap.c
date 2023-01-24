@@ -6,7 +6,7 @@
 /*   By: iecharak <iecharak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:15:53 by iecharak          #+#    #+#             */
-/*   Updated: 2023/01/12 20:58:31 by iecharak         ###   ########.fr       */
+/*   Updated: 2023/01/23 12:18:35 by iecharak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	sign_err(char *nums)
 	}
 }
 
-char	*ft_list_num(char **av)
+char	*ft_list_num(char **av, int ac)
 {
 	char	*list;
 	int		i;
 	int		j;
 	int		k;
 
-	list = malloc(sizeof(char) * is_num_args(av));
+	list = malloc(sizeof(char) * (is_num_args(av) + ac - 2));
 	if (!list)
 		return (NULL);
 	i = 1;
@@ -60,9 +60,12 @@ char	*ft_list_num(char **av)
 			k++;
 			j++;
 		}
+		list[k] = ' ';
+		k++;
 		i++;
 	}
 	list[k] = '\0';
+	//printf("c:%d\n", ac);
 	return (list);
 }
 
@@ -103,26 +106,52 @@ int	is_num_args(char **av)
 
 int	main(int ac, char **av)
 {
-	stack *a;
-	//stack   *b;
-	char *nums;
-	char **tab;
-	//int i = 0;
+	t_tab	*t_a;
+	t_stack	*a;
+	t_stack	*b;
+	t_stack	*head;
+	char	*nums;
+	char	**tab;
 
 	if (ac < 2)
 	{
 		exit(0);
 		return (0);
 	}
-    //printf("test");
-	nums = ft_list_num(av);
+	nums = ft_strtrim(ft_list_num(av, ac), " ");
 	sign_err(nums);
 	tab = ft_split(nums, ' ');
-    //printf("test");
-    a= fill_sort_stack(tab);
-	while (a)
+	t_a = fill_test_intgrs(tab);
+	a = ft_sorting(t_a);
+	head = a;
+	while (head)
 	{
-		ft_printf("%dtest\n", a->n);
-		a= a->next;
+		ft_printf("%d/", head->n);
+		head = head->next;
 	}
+	printf("\n");
+	b = ft_lstnew(t_a->size);
+	
+	// if(t_a->size == 3)
+	// 	ft_sort_three(a);
+	// else 
+	// 	ft_sort_stack(a,b);
+	ft_sort_five(a, b);
+	//a = head;
+	// pb(a, b);
+	// pb(a, b);
+	// pb(a,b);
+	// 	head = b;
+	// while (head)
+	// {
+	// 	ft_printf("n: %d   ", head->n);
+	// 	head = head->next;
+	// }
+	// printf("\n");
+	// rrb(b);
+	// while (a)
+	// {
+	// 	ft_printf("n: %d   ", a->n);
+	// 	a = a->next;
+	// }
 }
