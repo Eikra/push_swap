@@ -6,7 +6,7 @@
 /*   By: iecharak <iecharak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:15:53 by iecharak          #+#    #+#             */
-/*   Updated: 2023/01/23 12:18:35 by iecharak         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:28:27 by iecharak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,19 +100,42 @@ int	is_num_args(char **av)
 		l += j;
 		i++;
 	}
-	// printf("test%d", l);
 	return (l);
+}
+
+void	ft_index_stack(t_tab *t)
+{
+	int	i;
+	int	j;
+	int	swap;
+
+	i = 0;
+	while (i < t->size)
+	{
+		j = i + 1;
+		while ((j < t->size))
+		{
+			if (t->n[i] > t->n[j])
+			{
+				swap = t->n[i];
+				t->n[i] = t->n[j];
+				t->n[j] = swap;
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 int	main(int ac, char **av)
 {
-	t_tab	*t_a;
-	t_stack	*a;
-	t_stack	*b;
-	t_stack	*head;
-	char	*nums;
-	char	**tab;
+	t_tab *t_a;
+	t_stack *a;
+	t_stack *b;
+	char *nums;
+	char **tab;
 
+	b = NULL;
 	if (ac < 2)
 	{
 		exit(0);
@@ -123,35 +146,5 @@ int	main(int ac, char **av)
 	tab = ft_split(nums, ' ');
 	t_a = fill_test_intgrs(tab);
 	a = ft_sorting(t_a);
-	head = a;
-	while (head)
-	{
-		ft_printf("%d/", head->n);
-		head = head->next;
-	}
-	printf("\n");
-	b = ft_lstnew(t_a->size);
-	
-	// if(t_a->size == 3)
-	// 	ft_sort_three(a);
-	// else 
-	// 	ft_sort_stack(a,b);
-	ft_sort_five(a, b);
-	//a = head;
-	// pb(a, b);
-	// pb(a, b);
-	// pb(a,b);
-	// 	head = b;
-	// while (head)
-	// {
-	// 	ft_printf("n: %d   ", head->n);
-	// 	head = head->next;
-	// }
-	// printf("\n");
-	// rrb(b);
-	// while (a)
-	// {
-	// 	ft_printf("n: %d   ", a->n);
-	// 	a = a->next;
-	// }
+	ft_sort_stack(&a, &b, t_a->size);
 }

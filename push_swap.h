@@ -6,7 +6,7 @@
 /*   By: iecharak <iecharak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:16:17 by iecharak          #+#    #+#             */
-/*   Updated: 2023/01/23 13:10:04 by iecharak         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:27:10 by iecharak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,22 @@ t_stack		*ft_lstlast(t_stack *lst);
 void		ft_lstadd_back(t_stack **lst, t_stack *new);
 t_stack		*ft_lstnew(int nbr);
 t_stack		*ft_lstlast(t_stack *lst);
-void		sa(t_stack *a);
-void		sb(t_stack *b);
-void		sss(t_stack *s);
+void		sa(t_stack **a);
+void		sb(t_stack **b);
+void		sss(t_stack **s);
 void		ft_lstdelone(t_stack *lst);
-void		ss(t_stack *a, t_stack *b);
-void		pa(t_stack *a, t_stack *b);
-void		pb(t_stack *a, t_stack *b);
+void		ss(t_stack **a, t_stack **b);
+void		pa(t_stack **a, t_stack **b);
+void		pb(t_stack **a, t_stack **b);
 void		rs(t_stack *s);
-void		ra(t_stack *a);
-void		rb(t_stack *b);
-void		rr(t_stack *a, t_stack *b);
-void		rra(t_stack *a);
-void		rrb(t_stack *b);
+void		ra(t_stack **a);
+void		rb(t_stack **b);
+void		rr(t_stack **a, t_stack **b);
+void		rra(t_stack **a);
+void		rrb(t_stack **b);
 void		rrsb(t_stack *s);
 void		rsb(t_stack *s);
-void		rrr(t_stack *a, t_stack *b);
+void		rrr(t_stack **a, t_stack **b);
 void		rrs(t_stack *s);
 int			ft_lstsize(t_stack *lst);
 int			is_repeated(t_tab *a);
@@ -92,9 +92,9 @@ int			is_needed_rrb(t_stack *b);
 int			is_sorted_b(t_stack *b);
 void		ft_sort_three_a(t_stack *a, t_stack *b);
 void		ft_sort_five(t_stack *a, t_stack *b);
-void		ft_sort_stack(t_stack *a, t_stack *b);
+void		ft_sort_stack(t_stack **a, t_stack **b, int size);
 void		print_stack(t_stack *a);
 void		ft_sort_stack_b(t_stack *b);
-void	ft_sort_three_b(t_stack *a, t_stack *b);
+void		ft_sort_three_b(t_stack *a, t_stack *b);
 
 #endif

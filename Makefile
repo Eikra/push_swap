@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRC= ft_printf.c push_swap.c ft_atoi.c ft_split.c ft_strlen.c fill_test_intgrs.c ft_strtrim.c ft_sorting.c ft_rules.c ft_rules_utils.c push_swap_rules.c ft_sort_stack.c
+SRC= ft_printf.c push_swap.c ft_atoi.c ft_split.c ft_strlen.c fill_test_intgrs.c ft_strtrim.c ft_sorting.c ft_rules.c push_swap_rules.c ft_sort_stack.c
 
 OBJ= $(SRC:.c=.o)
 
